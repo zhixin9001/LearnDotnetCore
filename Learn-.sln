@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_EFCore_1", "1_EFCore_1\1_EFCore_1.csproj", "{69296E46-0778-4127-B79F-E204DBB5DCB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RupengBBS.Service", "RupengBBS.Service\RupengBBS.Service.csproj", "{F4304AEB-BE2E-49EC-BBD3-EAE677804889}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RupengBBS.Service", "RupengBBS.Service\RupengBBS.Service.csproj", "{F4304AEB-BE2E-49EC-BBD3-EAE677804889}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 MVC Core", "2 MVC Core\2 MVC Core.csproj", "{5EE11068-0E29-48AC-AF0A-7789E7E559B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_1 MVC Core Lib", "2_1 MVC Core Lib\2_1 MVC Core Lib.csproj", "{33D534B1-B459-437D-952B-D922C28636A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{F4304AEB-BE2E-49EC-BBD3-EAE677804889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4304AEB-BE2E-49EC-BBD3-EAE677804889}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4304AEB-BE2E-49EC-BBD3-EAE677804889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE11068-0E29-48AC-AF0A-7789E7E559B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE11068-0E29-48AC-AF0A-7789E7E559B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE11068-0E29-48AC-AF0A-7789E7E559B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE11068-0E29-48AC-AF0A-7789E7E559B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33D534B1-B459-437D-952B-D922C28636A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D534B1-B459-437D-952B-D922C28636A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D534B1-B459-437D-952B-D922C28636A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33D534B1-B459-437D-952B-D922C28636A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
