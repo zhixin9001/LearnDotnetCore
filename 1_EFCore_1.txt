@@ -1,0 +1,34 @@
+mysql默认latin1字符集，用ef自动创建数据库时，中文支持有问题
+创建表
+install-package Pomelo.Entity.FrameworkCore.Mysql
+编写Persion类
+区别：optionBuilder.UseMysql
+override oncreating/onconfiguring
+OnModelCreating
+	ToTable
+main 使用
+	using MydbContext
+
+DB Code First不支持
+LazyLoad不支持
+
+一对多配置
+  中间表的多对多还不支持，拆成两个一对多
+  配置文件放在UI层即可，不再需要安装EF
+
+  Author
+  Book
+  BookId
+  AuthorId
+
+  .First()在System.Linq下
+  EF不支持延迟加载，.Include在Microsoft.EntityFramework
+  中文乱码25：10
+
+多对多配置
+  角色 用户 中间表
+  
+  
+  
+
+
