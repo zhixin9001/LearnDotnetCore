@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\1_EFCore_1\1_EFCore_1.csproj" />
+    <ProjectReference Include="..\2_1 MVC Core Lib\2_1 MVC Core Lib.csproj" />
   </ItemGroup>
 
 </Project>
