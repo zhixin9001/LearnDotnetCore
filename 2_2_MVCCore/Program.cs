@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace _2_MVC_Core {
+namespace _2_2_MVCCore {
   public class Program {
     public static void Main(string[] args) {
       BuildWebHost(args).Run();
@@ -17,6 +17,10 @@ namespace _2_MVC_Core {
     public static IWebHost BuildWebHost(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
+            .ConfigureLogging(factory => {
+              factory.AddConsole();
+            })
             .Build();
+
   }
 }

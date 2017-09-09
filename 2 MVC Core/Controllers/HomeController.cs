@@ -16,21 +16,20 @@ namespace _2_MVC_Core.Controllers {
     IAdminUserService au;
     ILogService log;
     IHostingEnvironment hostingEnvironment;
-    //IMemoryCache _cache;
-
+    
     ILogger logger;
 
-    public HomeController(Person person, User user, IAdminUserService au, ILogService log, IHostingEnvironment hostingEnvironment/*, IMemoryCache _cache*/) {
+    public HomeController(Person person, User user, IAdminUserService au, ILogService log /*, IMemoryCache _cache*/) {
       this.person = person;
       this.user = user;
       this.au = au;
       this.log = log;
-      this.hostingEnvironment = hostingEnvironment;
+      //this.hostingEnvironment = hostingEnvironment;
       //this._cache = _cache;
     }
     public IActionResult Index() {
       //throw new Exception();
-      var au1 = HttpContext.RequestServices.GetService(typeof(IAdminUserService)) as IAdminUserService;
+      //var au1 = HttpContext.RequestServices.GetService(typeof(IAdminUserService)) as IAdminUserService;
       //_cache.Set("k1", "v1:" + DateTime.Now.ToString(), TimeSpan.FromSeconds(5));
       log.Add("add log");
       //return Content(person.Dance() + user.Dance()+au.GetPwd("username")+","+ au1.GetPwd("au1"));
