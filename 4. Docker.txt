@@ -1,0 +1,38 @@
+docker中安装microsoft/dotnet 镜像
+
+端口映射
+  docker run -p ip:hostPost:containerPort
+  省略ip 绑定所有网卡
+  ***
+  微软镜像中没有vi
+    apt-get install 
+    
+  Program.cs
+    app.UseUrls("http://*:5000");
+  nginx-（负载均衡）-本地端口-映射端口
+制作自己的镜像
+  之前的做法只是当作虚拟机
+  用docker做服务器，即抛，不需要有vi等编辑器
+  不应该在容器中写代码、敲指令
+  Dockerfile
+  不应该在每个容器中配置，而应先制作镜像
+  
+  步骤
+    编写Dockerfile，大小写
+    FROM ubuntu
+    RUN apt-get update
+    RUN apt-get install -y nginx (自动确认安装
+)
+    EXPOSE 80
+    
+    在当前文件夹，执行docker build -t zyk/nginx .
+      最后的点表示当前文件夹
+    默认只能自己主机使用
+      可以提交到DockerHub,或自己搭建DockerHub服务器
+  
+把网站发布到docker
+  UseUrl
+  本地发布
+  制作包含的镜像
+  运行-端口映射
+  
