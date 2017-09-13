@@ -1,38 +1,56 @@
-docker�а�װmicrosoft/dotnet ����
+docker中安装microsoft/dotnet 镜像
 
-�˿�ӳ��
+端口映射
   docker run -p ip:hostPost:containerPort
-  ʡ��ip ����������
+  省略ip 绑定所有网卡
   ***
-  ΢��������û��vi
+  微软镜像中没有vi
     apt-get install 
     
   Program.cs
     app.UseUrls("http://*:5000");
-  nginx-�����ؾ��⣩-���ض˿�-ӳ��˿�
-�����Լ��ľ���
-  ֮ǰ������ֻ�ǵ��������
-  ��docker�������������ף�����Ҫ��vi�ȱ༭��
-  ��Ӧ����������д���롢��ָ��
+  nginx-（负载均衡）-本地端口-映射端口
+制作自己的镜像
+  之前的做法只是当作虚拟机
+  用docker做服务器，即抛，不需要有vi等编辑器
+  不应该在容器中写代码、敲指令
   Dockerfile
-  ��Ӧ����ÿ�����������ã���Ӧ����������
+  不应该在每个容器中配置，而应先制作镜像
   
-  ����
-    ��дDockerfile����Сд
+  步骤
+    编写Dockerfile，大小写
     FROM ubuntu
     RUN apt-get update
-    RUN apt-get install -y nginx (�Զ�ȷ�ϰ�װ
+    RUN apt-get install -y nginx (自动确认安装
 )
     EXPOSE 80
     
-    �ڵ�ǰ�ļ��У�ִ��docker build -t zyk/nginx .
-      ���ĵ��ʾ��ǰ�ļ���
-    Ĭ��ֻ���Լ�����ʹ��
-      �����ύ��DockerHub,���Լ��DockerHub������
+    在当前文件夹，执行docker build -t zyk/nginx .
+      最后的点表示当前文件夹
+    默认只能自己主机使用
+      可以提交到DockerHub,或自己搭建DockerHub服务器
   
-����վ������docker
+把网站发布到docker
   UseUrl
-  ���ط���
-  ���������ľ���
-  ����-�˿�ӳ��
+  本地发布
+  制作包含的镜像
+  运行-端口映射
+  
+ 
+CMD与RUN
+RUN制作镜像时执行，多条指令
+CMD 容器启动时执行，单条指令，多条时最后一条生效
+ENTRYPOINT 类似CMD，ENTRYPOINT为指定容器参数
+  如果没有指定容器参数，两者的效果是一致的
+  如果有容器参数，CMD的命令将会被忽略，ENTRYPOINT则会把容器参数作为自己命令的参数
+
+自己搭建 使用titblit
+
+Git操作
+  git init
+  git pull 
+  git add .
+  git commit -m'注释'
+  git remote add origin <url>
+  git push --set-upstream git <url> master
   
