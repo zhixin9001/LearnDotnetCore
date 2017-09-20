@@ -1,0 +1,31 @@
+编写异步方法
+  以Async结尾
+  static Task<string> TestAsync(){
+    return Task.Run
+  }
+
+使用HttpClient
+  WebClient、HttpWebRequest下TPL很多用起来不方便的地方，推荐HttpClient，.net core只支持这个
+  Get
+  Post
+  
+不能Async
+  Task<HttpResponseMessage> task=hc.GetAsync("");
+  HttpResponseMessage msg=task.Result;
+  Task<string> taskRead=msg.Content.ReadAsStringAsync();
+  string html=taskRead.Result;
+  Console.WriteLine(html);
+  但这样没有发挥异步的作用
+  还有可能因上下文切换造成死锁
+
+异步方法是否标注async的区别
+编写异步方法
+  方法标注async 返回string\int等
+  不标注，返回Task<string\int>
+  return Task.FromResult(5);
+  return Task.Run(()={return 5;});
+  任务里面Thread.Sleep();
+    return Task.Delay(2000)
+  转换APM
+    Task.Factory.FromAsync();
+    
