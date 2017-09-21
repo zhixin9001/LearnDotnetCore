@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace _2_2_MVCCore {
   public class Startup {
@@ -19,7 +20,7 @@ namespace _2_2_MVCCore {
     public void ConfigureServices(IServiceCollection services) {
       services.AddMemoryCache();
       services.AddMvc();
-      services.AddSession(options=> {
+      services.AddSession(options => {
         options.IdleTimeout = TimeSpan.FromSeconds(60);
       });
     }
@@ -43,6 +44,12 @@ namespace _2_2_MVCCore {
             name: "default",
             template: "{controller=Home}/{action=Index}/{id?}");
       });
+
+      app.UseForwardedHeaders(new ForwardedHeadersOptions {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+      });
+
+      app.UseAuthentication();
     }
   }
 }

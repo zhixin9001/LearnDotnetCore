@@ -17,9 +17,7 @@ namespace _2_2_MVCCore {
     public static IWebHost BuildWebHost(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
-            .ConfigureLogging(factory => {
-              factory.AddConsole();
-            })
+            .UseIISIntegration()
             .Build();
 
   }
