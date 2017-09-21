@@ -1,0 +1,13 @@
+
+多线程 
+参数 thread.Start(参数);
+BackGround
+  Thread.Sleep(毫秒数); 只能操作当前线程
+  一个程序必须等所有“非后台线程”执行结束后，才能结束
+  如果设置t1.IsBackground=true，可以直接停止程序
+  
+优先级
+  t1.Priority=ThreadPriority.
+终止
+  Abort 通过抛出ThreadAbortException
+  
