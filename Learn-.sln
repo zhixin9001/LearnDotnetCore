@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2_1 MVC Core Lib", "2_1 MVC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2_2_MVCCore", "2_2_MVCCore\2_2_MVCCore.csproj", "{FD0FAF11-044B-4526-889D-3C3EF61E7FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3 3 CreateAsyncMethod", "3 3 CreateAsyncMethod\3 3 CreateAsyncMethod.csproj", "{2E892B1E-2479-4D21-B88F-0CEF49A980C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3 3 CreateAsyncMethod", "3 3 CreateAsyncMethod\3 3 CreateAsyncMethod.csproj", "{2E892B1E-2479-4D21-B88F-0CEF49A980C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.4 WaitAll", "3.4 WaitAll\3.4 WaitAll.csproj", "{C672269E-F774-4A4A-9DAE-8FC381D9CF38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.4 Async in Interface", "3.4 Async in Interface\3.4 Async in Interface.csproj", "{B947D199-A14C-44F8-A07B-D3C2724432D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.5 Async in MVC", "3.5 Async in MVC\3.5 Async in MVC.csproj", "{23B58D96-834B-4C75-A289-4A695E6B20F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{2E892B1E-2479-4D21-B88F-0CEF49A980C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E892B1E-2479-4D21-B88F-0CEF49A980C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E892B1E-2479-4D21-B88F-0CEF49A980C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C672269E-F774-4A4A-9DAE-8FC381D9CF38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C672269E-F774-4A4A-9DAE-8FC381D9CF38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C672269E-F774-4A4A-9DAE-8FC381D9CF38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C672269E-F774-4A4A-9DAE-8FC381D9CF38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B947D199-A14C-44F8-A07B-D3C2724432D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B947D199-A14C-44F8-A07B-D3C2724432D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B947D199-A14C-44F8-A07B-D3C2724432D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B947D199-A14C-44F8-A07B-D3C2724432D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B58D96-834B-4C75-A289-4A695E6B20F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B58D96-834B-4C75-A289-4A695E6B20F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B58D96-834B-4C75-A289-4A695E6B20F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B58D96-834B-4C75-A289-4A695E6B20F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
