@@ -1,0 +1,33 @@
+没有界面
+WebService-WCF-WebAPI
+
+Get 获取数据
+Delete
+Post 新增
+Put 修改
+
+Rest 接口按照Http谓词语义涉及
+  把所有操作都抽象成对资源的增删改查
+    找不到 返回404
+    没权限 返回401
+
+  可以为不同类型做不同的权限控制
+  不再需要Delete AddNew这样了，根据请求的类型就可以判断
+  不再需要约定返回状态码
+  有利于系统优化，浏览器可以自动缓存Get请求
+  Get没有副作用，时幂等的，可以多次执行
+
+Web API -ASP.NET Web API
+REST风格 难以彻底遵守
+
+Web API的参数
+  Get
+    直接写在url
+    FromUri,只能有一个参数
+      ?其它参数怎么办
+  Post
+    用url会有很多坑
+    FromBody
+      如果只有一个参数，写模型实体哎
+  
+
