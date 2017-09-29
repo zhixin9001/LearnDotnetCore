@@ -1,0 +1,79 @@
+
+一、样式选择器
+
+二、样式Class命名方式
+
+三、DOM模型
+
+
+四、心得
+百分比
+table 
+styl
+
+关于CSS的一些基础内容
+
+CSS（Cascading Style Sheet）中文名层叠样式表，用于为html文档添加样式控制，也是一种计算机语言。
+
+一、CSS语法
+a)CSS规则由选择器和声明组成，构造为selector{declaration1;declaration2}，多个声明之间用分号隔开。declaration又包含属性property和值value两部分。结构为property:value。
+
+b) 不同的property的value有不太能够的写法，比如color:#ff000;color:rgb(255,255,255);width:12px;width:98%;font-family:"Calibr"等等。
+c) CSS中使用空格不会影响工作效果，而且CSS对大小写不敏感，但涉及到与 HTML 文档一起工作的话，class 和 id 名称对大小写是敏感的。
+
+d) 可以对选择器分组，然后使用相同的声明，比如
+table,div,h1{
+  color:red;
+}
+
+二、选择器
+常用的选择器有派生选择器、ID选择器、类选择器、属性选择器等。
+a) 派生选择器
+能够依据元素的上下文关系来定义样式，所以也叫上下文选择器。比如要让li列表中的strong元素变为斜体字：
+
+li strong {
+    font-style: italic;
+    font-weight: normal;
+  }
+  
+<ol>
+<li><strong>我是斜体字</strong></li>
+<li>我是正常的字体。</li>
+</ol>
+
+让h2中的strong颜色为blue
+
+h2 {
+     color: red;
+     }
+
+h2 strong {
+     color: blue;
+     }
+     
+<h2>The strongly emphasized word in this subhead is<strong>blue</strong>.</h2>
+h2 strong会覆盖h2的样式定义
+
+b)ID选择器
+用于为标有特定ID的html元素指定样式。
+
+#red {color:red;}
+<p id="red">这个段落是红色。</p>
+ID属性在html中不能重复，否则只有最后渲染的那个生效。
+
+ID选择器也用于建立派生选择器，扩展派生选择器的使用场合。
+
+c) 类选择器
+用点号开头，且类名的第一个元素不能是数字，基本使用为：
+.center {text-align: center}
+<h1 class="center">
+类选择器可作用于所有标记的元素。
+类选择器也可以可派生选择器配合使用：
+.fancy td {
+	color: orange;
+	}
+这样写时，类名为fancy的更大的元素内部的表格单元都会显示橙色文字。
+td.fancy {
+	color: orange;
+	}
+而这样时，所有类名为 fancy 的表格单元都将是橙色文字。
