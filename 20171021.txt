@@ -1,0 +1,48 @@
+static void Main(string[] args)
+        {
+            string reg, str;
+            reg = @"\d{3}";
+            str = "123";
+
+            reg = @"\d{3}";
+            str = "1233";
+
+            reg = @"^\d{3}$";
+            str = "1232";
+
+            reg = @"^[0-9]{3}$";
+            str = "123";
+
+            //PhoneNum
+            reg = @"^1\d{10}$";
+            str = "15891655419";
+
+            //IP  \. [.]
+            reg = @"^\d{1,3}[.]\d{1,3}\.\d{1,3}\.\d{1,3}$";
+            str = "123.190.0.1";
+
+            //chinese 
+            reg = @"^[\u4e00-\u9fa5]{2,4}$";
+            str = "王母娘娘2";
+
+            //or |大于^ $
+            reg = @"^[\u4e00-\u9fa5]{2,4}$|^\d{1,3}$";
+            str = "1";
+
+            bool isMatch = Regex.IsMatch(str, reg);
+            Console.WriteLine(isMatch);
+
+            //Extract
+            //() 改变优先级、提取内容
+            reg = @"^(\d{4})\-(\d{1,2})\-(\d{1,2})$";
+            str = "2017-8-1";
+            Match match = Regex.Match(str, reg);
+            if (match.Success)
+            {
+                //group 0为全部
+                var year = match.Groups[1].ToString();
+                Console.WriteLine(year);
+            }
+
+            Console.ReadKey();
+        }
