@@ -48,3 +48,76 @@ static void Main(string[] args)
 
             Console.ReadKey();
         }
+
+
+    public static class WebApiConfig
+    {
+        public static void Register(HttpConfiguration config)
+        {
+            // Web API configuration and services
+
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApiv1",
+                routeTemplate: "api/v1/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApiv2",
+                routeTemplate: "api/v2/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Services.Replace(typeof(IHttpControllerSelector), new VersionControllerSelector(config));
+        }
+    }
+    
+        public class VersionControllerSelector : DefaultHttpControllerSelector
+    {
+        private HttpConfiguration _config;
+        public VersionControllerSelector(HttpConfiguration configuration) : base(configuration)
+        {
+            _config = configuration;
+        }
+        public override IDictionary<string, HttpControllerDescriptor> GetControllerMapping()
+        {
+            Dictionary<string, HttpControllerDescriptor> dict = new Dictionary<string, HttpControllerDescriptor>();
+            foreach (var asm in _config.Services.GetAssembliesResolver().GetAssemblies())
+            {
+                //获取所有继承自ApiController的非抽象类
+                var controllerTypes = asm.GetTypes().Where(t => !t.IsAbstract && typeof(ApiController).IsAssignableFrom(t)).ToArray();
+                foreach (var ctrlType in controllerTypes)
+                {
+                    //从namespace中提取版本号
+                    var match = Regex.Match(ctrlType.Namespace, @"_8._1_WebAPI.Controllers.v(\d+)");
+                    if (match.Success)
+                    {
+                        string verNum = match.Groups[1].Value;
+                        string ctrlName = Regex.Match(ctrlType.Name, "(.+)Controller").Groups[1].Value;
+                        string key = ctrlName + "v" + verNum;
+                        dict[key] = new HttpControllerDescriptor(_config, ctrlName, ctrlType);
+                    }
+                }
+            }
+            return dict;
+        }
+
+        public override HttpControllerDescriptor SelectController(HttpRequestMessage request)
+        {
+
+            var controllers = GetControllerMapping();
+            //获取路由数据
+            var routeData = request.GetRouteData();
+            //从路由中获取当前Controller的名称
+            var controllerName = (string)routeData.Values["controller"];
+            //从url中获取版本号
+            string verNum = Regex.Match(request.RequestUri.PathAndQuery, @"api/v(\d+)").Groups[1].Value;
+            //从报文头获取版本号
+            //string verNum = request.Headers.GetValues("ApiVersion").Single();
+            string key = controllerName + "v" + verNum;
+            return controllers.ContainsKey(key) ? controllers[key] : null;
+        }
+    }
