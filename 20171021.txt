@@ -1,3 +1,32 @@
+var payload = new Dictionary<string, object>
+      {
+        { "UserID",123},
+        {"UserName","admin" }
+      };
+
+      var secret = "h3h5k9kll789";
+
+      IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+      IJsonSerializer serializer = new JsonNetSerializer();
+      IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+      IJwtEncoder encoder = new JwtEncoder(algorithm, serializer, urlEncoder);
+      var token = encoder.Encode(payload, secret);
+      Console.WriteLine(token);
+
+      token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VySUQiOjEyMywiVXNlck5hbWUiOiJhZG1pbiJ9.7DWb6gdkhqXAYl8all25CFCj1YSJcc93bekNmEmOqoQ";
+      try {
+        IJsonSerializer serializer1 = new JsonNetSerializer();
+        IDateTimeProvider provider1 = new UtcDateTimeProvider();
+        IJwtValidator validator1 = new JwtValidator(serializer1, provider1);
+        IBase64UrlEncoder urlEncoder1 = new JwtBase64UrlEncoder();
+        IJwtDecoder decoder = new JwtDecoder(serializer1, validator1, urlEncoder1);
+        var json = decoder.Decode(token, secret, verify: true);
+        Console.WriteLine(json);
+      }
+      catch {
+
+      }
+
 https://pan.baidu.com/s/1eS19Wn4#list/path=%2F
 https://pan.baidu.com/share/link?uk=3005976014&shareid=28573063
 static void Main(string[] args)
