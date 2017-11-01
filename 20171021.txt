@@ -1,3 +1,39 @@
+JWT
+
+c) JWT的场合
+最常用于对已经登录用户的认证，比如单点登录，只需在每次请求中都附上JWT，JWT体积小巧且支持跨域。
+JWT也可以用于信息传输，因为有根据payload和header计算出的签名的保护，可以确保传递的信息不被篡改。
+
+三、JWT的构成
+JWT由Header、Payload、Signature三部分构成，之间用点号风格，构成xx.yy.zz的形式。
+a) Header声明了token类型、算法类型（HMAC SHA256或RSA），比如
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+然后对header做Base64URL编码。
+b) Payload中保存了声明信息，声明信息有标准声明、公开声明、自定义声明三种类型，前两种声明在相关的标准中已经规定https://www.iana.org/assignments/jwt/jwt.xhtml，推荐但不强制使用，标准声明举例有：
+
+iss: jwt签发者
+sub: jwt所面向的用户
+aud: 接收jwt的一方
+exp: jwt的过期时间，这个过期时间必须要大于签发时间
+nbf: 定义在什么时间之前，该jwt都是不可用的.
+iat: jwt的签发时间
+jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击
+发送方和接收方也可以自定声明。
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true
+}
+载荷信息也使用Base64URL编码。
+
+
+c) Signature，签证信息是根据Header、Payload的Base64URL编码以及密钥(Secret)加密生成的，加密算法使用header中定义的类型。
+
+d) Secret信息只保存在服务端，客户端认证后拿到JWT作为token，在后续访问服务端时
+
 https://pan.baidu.com/s/1hsdYF8g#list/path=%2F94%2F1944%EF%BC%9A%E6%9D%BE%E5%B1%B1%E6%88%98%E5%BD%B9%E7%AC%94%E8%AE%B0-%E4%BD%99%E6%88%88&parentPath=%2F94
 var payload = new Dictionary<string, object>
       {
